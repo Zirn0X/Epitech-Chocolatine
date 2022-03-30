@@ -13,7 +13,5 @@ jobs:
         with:
           fetch-depth: 0
       - run:
-          find . \( -name "#*#" -o -name "*~" \ 
-          -o -iname "*pain_au_chocolat*" \
-          -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcda" -o -name "*.gcno" -o -name "*.gcov" \
-          -o -name "*/tmp/*"\) -print -delete
+          find . \( -name "#*#" -o -name "*~" -o -name "*.o" -o -name "*.gcda" -o -name "*.gcno" -o -name "*pain_au_chocolat*" -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcda" -o -name "*.gcov" -o -name "*pain_au_chocolat*" \) -print -delete
+          find tmp/ \( -name "#*#" -o -name "*~" -o -name "*.o" -o -name "*.gcda" -o -name "*.gcno" -o -name "*pain_au_chocolat*" -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcda" -o -name "*.gcov" -o -name "*pain_au_chocolat*" \) -print -delete

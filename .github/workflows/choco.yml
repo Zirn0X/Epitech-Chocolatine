@@ -6,12 +6,12 @@ on:
 env:
   MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-thomas.tran.git
 jobs:
-  check_repository_cleanliness:
+  check_program_compilation:
     runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker:latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - run:
-          find . \( -name "#*#" -o -name "*~" -o -name "*.o" -o -name "*.gcda" -o -name "*.gcno" -o -name "*pain_au_chocolat*" -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcda" -o -name "*.gcov" -o -name "*pain_au_chocolat*" \) -print -delete
-          find tmp/ \( -name "#*#" -o -name "*~" -o -name "*.o" -o -name "*.gcda" -o -name "*.gcno" -o -name "*pain_au_chocolat*" -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcda" -o -name "*.gcov" -o -name "*pain_au_chocolat*" \) -print -delete
+      - uses: actions/checkout@v2
+      - name: Build project
+        run: make
+      - name: Clean build
+        run: make clean

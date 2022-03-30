@@ -5,13 +5,22 @@ on:
       - 'ga-ignore-*'
 env:
   MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-thomas.tran.git
+  EXECUTABLES: "my_sokoban"
 jobs:
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build project
         run: make
       - name: Clean build
         run: make clean
+      - name: Check files existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "$EXECUTABLES"
+      - name: File exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run : echo All files exists!

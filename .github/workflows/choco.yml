@@ -25,7 +25,7 @@ jobs:
           read -ra ADDR <<< "$filename"
           for i in "${ADDR[@]}";
           do
-          [ ! -f "$i" ] && echo "::error::$i is missing."
+          [ ! -f "$i" ] && echo "::error::$i is missing." && exit 1
           done
   # run_tests:
   #   runs-on: ubuntu-latest

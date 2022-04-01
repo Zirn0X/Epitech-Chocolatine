@@ -12,15 +12,39 @@ jobs:
     container: epitechcontent/epitest-docker:latest
     steps:
       - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
       - name: Build project
         run: make
       - name: Clean build
         run: make clean
-      - name: Check files existence
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: "my_sokoban"
-      - name: File exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run : echo All files exists!
+      - name: Check executables
+        run: |
+          IFS=','
+          read -ra ADDR <<< "$EXECUTABLES"
+          for i in "${ADDR[@]}";
+          do
+          [ ! -f "$i" ] && echo "::error::$(i) is missing." && exit 1
+          done
+  # run_tests:
+  #   runs-on: ubuntu-latest
+  #   container: epitechcontent/epitest-docker:latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Units test
+  #       run: make tests_run
+  # push_to_mirror:
+  #   runs-on: ubuntu-latest
+  #   container: epitechcontent/epitest-docker:latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: pixta-dev/repository-mirroring-action@v1
+  #       with:
+  #         target_repo_url:
+  #           "$(MIRROR_URL)"
+  #         ssh_private_key:
+  #           ${{ secrets.PRIVATE_KEY }}

@@ -32,7 +32,6 @@ fclean:	clean
 		rm -f $(NAME_TEST)
 		rm -f vgcore.*
 		rm -f ./$(NAME).test
-		make fclean -C lib/
 
 tests_run:	$(OBJ) build_lib
 			gcc $(OBJ) $(TST) -o $(NAME).test $(TARGS) $(CPPFLAGS) $(CFLAGS)

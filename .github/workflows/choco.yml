@@ -20,6 +20,7 @@ jobs:
         run: make clean
       - name: Check executables
         run: |
+          filename="$EXECUTABLES"
           IFS=','
           read -ra ADDR <<< "$EXECUTABLES"
           for i in "${ADDR[@]}";

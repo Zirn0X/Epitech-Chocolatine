@@ -24,7 +24,7 @@ jobs:
           read -ra ADDR <<< "$EXECUTABLES"
           for i in "${ADDR[@]}";
           do
-          [ ! -f "$i" ] && echo "::error::$(i) is missing." && exit 1
+          [ ! -f "$i" ] && echo "::error::$i is missing."
           done
   # run_tests:
   #   runs-on: ubuntu-latest

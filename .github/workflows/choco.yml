@@ -5,7 +5,7 @@ on:
       - 'ga-ignore-*'
 env:
   MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-thomas.tran.git
-  EXECUTABLES: "my_sokoban"
+  EXECUTABLES: "my_sokoban,pushswap"
 jobs:
   check_program_compilation:
     runs-on: ubuntu-latest
@@ -22,7 +22,7 @@ jobs:
         run: |
           filename="$EXECUTABLES"
           IFS=','
-          read -ra ADDR <<< "$EXECUTABLES"
+          read -ra ADDR <<< "$filename"
           for i in "${ADDR[@]}";
           do
           [ ! -f "$i" ] && echo "::error::$i is missing."

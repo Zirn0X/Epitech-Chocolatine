@@ -41,17 +41,12 @@ jobs:
         run: make tests_run
   push_to_mirror:
     runs-on: ubuntu-latest
-    env:
-      MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-thomas.tran.git
-      EXECUTABLES: "my_sokoban"
     steps:
-      - name: Echo git
-        run: echo $MIRROR_URL
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
-          target_repo_url: "$MIRROR_URL"
+          target_repo_url: ${{ env.MIRROR_URL }}
           ssh_private_key:
             ${{ secrets.PRIVATE_KEY }}

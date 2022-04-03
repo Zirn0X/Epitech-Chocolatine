@@ -45,6 +45,8 @@ jobs:
       MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-thomas.tran.git
       EXECUTABLES: "my_sokoban"
     steps:
+      - name: Echo git
+        run: echo $MIRROR_URL
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0

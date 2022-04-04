@@ -26,8 +26,8 @@ jobs:
           for i in "${ADDR[@]}"
           do
           [ ! -f "$i" ] && echo "::error::$i is missing."
-          exit 1
           done
+          exit 0
   run_tests:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest

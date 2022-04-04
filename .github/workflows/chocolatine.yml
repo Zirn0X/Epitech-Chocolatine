@@ -1,6 +1,6 @@
 name: Chocolatine
 on:
-  [push | pull]:
+  [push, pull_request]:
     branches-ignore:
       - 'ga-ignore-*'
 env:

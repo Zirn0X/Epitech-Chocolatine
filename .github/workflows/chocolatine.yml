@@ -5,14 +5,11 @@ on:
       - 'ga-ignore-*'
 env:
   MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-thomas.tran.git
-  EXECUTABLES: "my_sokoban"
+  EXECUTABLES: "my_sokoban,pushwap"
 jobs:
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest
-    env:
-      MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-thomas.tran.git
-      EXECUTABLES: "my_sokoban"
     steps:
       - uses: actions/checkout@v3
         with:

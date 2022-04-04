@@ -26,7 +26,7 @@ jobs:
           filename="$EXECUTABLES"
           IFS=','
           read -ra ADDR <<< "$filename"
-          for i in "${ADDR[@]}";
+          for i in "${ADDR[@]}"
           do
           [ ! -f "$i" ] && echo "::error::$i is missing."
           done

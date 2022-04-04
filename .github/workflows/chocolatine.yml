@@ -14,8 +14,7 @@ jobs:
         with:
             fetch-depth: 0
       - name: Check useless files
-        run:  |
-        echo date
+        run: echo date
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest

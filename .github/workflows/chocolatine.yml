@@ -26,6 +26,7 @@ jobs:
           var=1
           echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
           done
+          echo "var = $var"
           [ $var -eq "1" ] && exit 1
   check_program_compilation:
     runs-on: ubuntu-latest

@@ -21,9 +21,10 @@ jobs:
         run:  |
           find . -name "*.a" -o -name "*.o" -o -name "#*#" -o -name "*~" -o -name "*pain_au_chocolat*" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcovr" |
           while read FILE;
-          do 
+          do
           echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
           done
+          exit 1
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest

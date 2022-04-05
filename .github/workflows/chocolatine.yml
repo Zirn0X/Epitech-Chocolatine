@@ -22,7 +22,7 @@ jobs:
           find . -name "*.a" -o -name "*.o" -o -name "#*#" -o -name "*~" -o -name "*pain_au_chocolat*" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcovr" |
           while read FILE;
           do 
-          echo "::error::$FILE is missing or not a executable.";
+          echo "::error file=$FILE";
           done
   check_program_compilation:
     runs-on: ubuntu-latest

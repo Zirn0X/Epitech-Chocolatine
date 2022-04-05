@@ -13,6 +13,8 @@ env:
 jobs:
   check_repository_cleanliness:
     runs-on: ubuntu-latest
+    env:
+    value=0
     steps:
       - uses: actions/checkout@v3
         with:

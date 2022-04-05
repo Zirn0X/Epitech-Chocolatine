@@ -26,7 +26,6 @@ jobs:
           var=1
           echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
           done
-          echo "var = $var"
           [ $var -eq "1" ] && exit 1
           exit 0
   check_program_compilation:

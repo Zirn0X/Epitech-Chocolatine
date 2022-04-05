@@ -23,8 +23,8 @@ jobs:
           while read FILE;
           do
           echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
-          done
           exit 1
+          done
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest

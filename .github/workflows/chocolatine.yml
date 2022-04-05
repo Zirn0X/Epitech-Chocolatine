@@ -26,7 +26,7 @@ jobs:
           value=1
           echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
           done
-          ::exit::
+          echo "value=$value"
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest

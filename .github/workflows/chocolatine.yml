@@ -19,7 +19,6 @@ jobs:
             fetch-depth: 0
       - name: Check useless files
         run:  |
-          value=0
           find . -name "*.a" -o -name "*.o" -o -name "*.exe" -o -name "#*#" -o -name "*~" -o -name "*pain_au_chocolat*" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcov" |
           while read FILE;
           do

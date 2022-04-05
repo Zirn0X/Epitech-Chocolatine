@@ -22,7 +22,7 @@ jobs:
           find . -name "*.a" -o -name "*.o" -o -name "#*#" -o -name "*~" -o -name "*pain_au_chocolat*" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcovr" |
           while read FILE;
           do 
-          echo "::error title=Unwanted file detected:,file=$FILE,line=10,col=15:: $FILE";
+          echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
           done
   check_program_compilation:
     runs-on: ubuntu-latest

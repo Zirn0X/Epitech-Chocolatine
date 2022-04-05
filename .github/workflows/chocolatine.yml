@@ -19,12 +19,16 @@ jobs:
             fetch-depth: 0
       - name: Check useless files
         run:  |
+          var=0
           find . -name "*.a" -o -name "*.o" -o -name "#*#" -o -name "*~" -o -name "*pain_au_chocolat*" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcovr" |
           while read FILE;
           do
+          var=1
           echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
-          exit 1
           done
+          if [ $var -eq "1" ]; then
+            exit 1
+          fi
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest

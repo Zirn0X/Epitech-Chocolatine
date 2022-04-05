@@ -18,7 +18,12 @@ jobs:
         with:
             fetch-depth: 0
       - name: Check useless files
-        run: echo date
+        run:  |
+          find . -name "*.a" -o -name "*.o" -o -name "#*#" -o -name "*~" -o -name "*pain_au_chocolat*" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcovr" |
+          while read FILE;
+          do 
+          echo "::error::$FILE is missing or not a executable.";
+          done
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest
@@ -37,7 +42,7 @@ jobs:
           read -ra ADDR <<< "$filename"
           for i in "${ADDR[@]}"
           do
-          [ ! -f "$i" ] && echo "::error::$i is missing." && exit 1
+          [[ ! -f "$i" || ! -x "$i" ]] && echo "::error::$i is missing or not a executable." && exit 1
           done
           exit 0
   run_tests:

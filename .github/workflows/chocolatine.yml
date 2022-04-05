@@ -26,10 +26,7 @@ jobs:
           var=1
           echo "::error title=Unwanted file detected,file=$FILE,line=10,col=15:: $FILE";
           done
-          if [ $var -eq "1" ];
-          then
-            exit 1
-          fi
+          [ $var -eq "1" ] && exit 1
   check_program_compilation:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest
